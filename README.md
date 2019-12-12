@@ -1,2 +1,4 @@
-# dart-sorting-algorithms
-Set of sorting algorithms, written in Dart (Bubble, Selection, Insertion, Merge, Quick).
+A sample command-line application.
+
+Created from templates made available by Stagehand under a BSD-style
+[license](https://github.com/dart-lang/stagehand/blob/master/LICENSE).
