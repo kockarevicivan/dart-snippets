@@ -1,19 +1,66 @@
 main() {
   List<int> array = [5, 6, 1, 8, 2, 4, 0, 9, 8, 8, 7];
 
-  // insertionSort(array);
-  // selectionSort(array);
-  // bubbleSort(array);
-  // mergeSort(array);
+  print(mergeSort(array));
+}
 
-  quickSort(array, 0, array.length-1);
 
-  print(array);
+/// Bubble sort.
+List<int> bubbleSort(array) {
+  for (var i = 0; i < array.length; i++) {
+    for (var j = 0; j < array.length - i - 1; j++) {
+      if (array[j] > array[j + 1]) swap(array, j, j + 1);
+    }
+  }
+
+  return array;
+}
+
+/// Selection sort.
+List<int> selectionSort(array) {
+  for (var i = 0; i < array.length; i++) {
+    var minIndex = i;
+
+    for (var j = i + 1; j < array.length; j++) {
+      if (array[minIndex] > array[j]) minIndex = j;
+    }
+    
+    swap(array, i, minIndex);
+  }
+
+  return array;
+}
+
+/// Cocktail sort.
+List<int> cocktailSort(array) {
+  // TODO: To be implemented.
+  
+  return null;
+}
+
+/// Comb sort.
+List<int> combSort(array) {
+  // TODO: To be implemented.
+  
+  return null;
+}
+
+/// Insertion sort.
+List<int> insertionSort(array) {
+  for(var i = 0; i < array.length; i++) {
+    var j = i;
+
+    while(j > 0 && array[j] < array[j-1]) {
+      swap(array, j, --j);
+    }
+  }
+  
+  return array;
 }
 
 /// Merge sort.
 List<int> mergeSort(array) {
-  if (array.length == 1) return array;
+  if(array.length == 1) return array;
 
   var left = mergeSort(array.sublist(0, (array.length / 2).floor()));
   var right = mergeSort(array.sublist((array.length / 2).floor()));
@@ -22,77 +69,13 @@ List<int> mergeSort(array) {
 }
 
 /// Quick sort. Not done!
-void quickSort(array, startIndex, endIndex) {
-  if (endIndex - startIndex == 1) return;
+List<int> quickSort(array, startIndex, endIndex) {
+  // TODO: To be implemented.
 
-  var pivotIndex = startIndex + ((endIndex-startIndex) / 2).floor();
-  var pivot = array[pivotIndex];
-
-  swap(array, pivotIndex, endIndex);
-
-  var itemLeftIndex = startIndex,
-      itemRightIndex = endIndex-1;
-
-  // TODO: Finish.
-  while(itemLeftIndex < itemRightIndex) {
-    if(array[itemLeftIndex] >= pivot && array[itemRightIndex] <= pivot) {
-      swap(array, itemLeftIndex, itemRightIndex);
-    } else {
-      if (array[itemLeftIndex] < pivot) {
-        itemLeftIndex++;
-      }
-      
-      if (array[itemRightIndex] > pivot) {
-        itemRightIndex--;
-      }
-    }
-  }
-
-  swap(array, pivotIndex, endIndex);
-
-  quickSort(array, startIndex, pivotIndex-1);
-  quickSort(array, pivotIndex+1, endIndex);
+  return null;
 }
 
-/// Bubble sort.
-void bubbleSort(array) {
-  for (var i = 0; i < array.length; i++) {
-    for (var j = i + 1; j < array.length; j++) {
-      if (array[j] < array[i]) {
-        swap(array, i, j);
-      }
-    }
-  }
-}
 
-/// Selection sort.
-void selectionSort(array) {
-  var minIndex;
-  for (var i = 0; i < array.length; i++) {
-    minIndex = i;
-
-    for (var j = i + 1; j < array.length; j++) {
-      if (array[j] < array[minIndex]) {
-        minIndex = j;
-      }
-    }
-
-    swap(array, minIndex, i);
-  }
-}
-
-/// Insertion sort.
-void insertionSort(array) {
-  for (var i = 0; i < array.length; i++) {
-    for (var j = i; j >= 0; j--) {
-      if (j == 0 || array[j - 1] < array[j]) {
-        break;
-      } else {
-        swap(array, j, j - 1);
-      }
-    }
-  }
-}
 
 /// Generic element swap function.
 void swap(array, i, j) {
@@ -102,17 +85,17 @@ void swap(array, i, j) {
 }
 
 /// Merge function for merge sort.
-List<int> merge(List leftList, List rightList) {
-  var finalList = [];
+List<int> merge(List<int> leftList, List<int> rightList) {
+  List<int> finalList = [];
 
   while (leftList.isNotEmpty || rightList.isNotEmpty) {
-    if(leftList == null || leftList.isEmpty) {
+    if (leftList == null || leftList.isEmpty) {
       finalList.add(rightList[0]);
       rightList.removeAt(0);
-    } else if(rightList == null || rightList.isEmpty) {
+    } else if (rightList == null || rightList.isEmpty) {
       finalList.add(leftList[0]);
       leftList.removeAt(0);
-    } else if(leftList[0] < rightList[0]) {
+    } else if (leftList[0] < rightList[0]) {
       finalList.add(leftList[0]);
       leftList.removeAt(0);
     } else {
