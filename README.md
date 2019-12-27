@@ -1,4 +1,6 @@
-A sample command-line application.
+# dot-net-snippets
 
-Created from templates made available by Stagehand under a BSD-style
-[license](https://github.com/dart-lang/stagehand/blob/master/LICENSE).
+Set of tiny .NET snippets (algorithms, data structures, graph searches etc).
+
+## Project setup
+Install Visual Studio 2015+ (Community is also fine), restore the packages and run the solution.
